@@ -4,7 +4,7 @@
 
 
 # 安装
-pip install -U drf-yasg
+pip install -U drf-yasg  
 pip install git+https://github.com/yang0/SzAutoSchema
 
 
