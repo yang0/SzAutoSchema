@@ -62,4 +62,5 @@ pip install git+https://github.com/yang0/SzAutoSchema
 
 
 # 访问
-http://localhost:8080/swagger
+http://localhost:8080/swagger  效果如下：  
+![screen shot](./img/1.png)
