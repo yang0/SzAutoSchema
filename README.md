@@ -64,3 +64,10 @@ pip install git+https://github.com/yang0/SzAutoSchema
 # 访问
 http://localhost:8080/swagger  效果如下：  
 ![screen shot](./img/1.png)
+
+
+# 其他说明
+1 drf_yasg还支持很多高级配置，包括文档浏览的权限控制等，我这里都去掉了  
+2 drf_yasg支持mock接口，但是需要侵入业务代码，这里不采用了  
+3 接口文件中的注释得这么写：  
+![screen shot](./img/2.png)
