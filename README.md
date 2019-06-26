@@ -14,7 +14,11 @@ pip install git+https://github.com/yang0/SzAutoSchema
     INSTALLED_APPS = [
         ...
         'drf_yasg',
+        # 把静态文件服务打开
+        'django.contrib.staticfiles',
     ]
+
+    STATIC_ROOT = '/static/'
 
     SWAGGER_SETTINGS = {
 	    'PERSIST_AUTH': False,
@@ -22,7 +26,7 @@ pip install git+https://github.com/yang0/SzAutoSchema
 	    'REFETCH_SCHEMA_ON_LOGOUT': False,
 
 
-	    'DEFAULT_AUTO_SCHEMA_CLASS': 'SzAutoSchema',
+	    'DEFAULT_AUTO_SCHEMA_CLASS': 'szautoschema.SzAutoSchema',
 
 	}
 
