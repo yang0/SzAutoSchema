@@ -9,26 +9,32 @@ pip install git+https://github.com/yang0/SzAutoSchema
 
 
 # 配置
+在测试或开发环境中执行命令：
+-----------------------------------------
+	echo 'export RUN_ENV=dev' 1>> ~/.bashrc && source ~/.bashrc
+
+
 设置settings.py
 -----------------------------------------
-    INSTALLED_APPS = [
-        ...
-        'drf_yasg',
-        # 把静态文件服务打开
-        'django.contrib.staticfiles',
-    ]
+	RUN_ENV = os.getenv("RUN_ENV",default='')
+	# swagger相关配置====================
+	if RUN_ENV == 'dev':
+	    DEV_APPS = [
+	        'drf_yasg',
+	    ]
 
-    STATIC_ROOT = '/static/'
-
-    SWAGGER_SETTINGS = {
-	    'PERSIST_AUTH': False,
-	    'REFETCH_SCHEMA_WITH_AUTH': False,
-	    'REFETCH_SCHEMA_ON_LOGOUT': False,
+	    INSTALLED_APPS += DEV_APPS
 
 
-	    'DEFAULT_AUTO_SCHEMA_CLASS': 'szautoschema.SzAutoSchema',
+	    SWAGGER_SETTINGS = {
+	        'PERSIST_AUTH': False,
+	        'REFETCH_SCHEMA_WITH_AUTH': False,
+	        'REFETCH_SCHEMA_ON_LOGOUT': False,
 
-	}
+
+	        'DEFAULT_AUTO_SCHEMA_CLASS': 'szautoschema.SzAutoSchema',
+	    }
+	# swagger相关配置==================
 
 
 设置url.py
