@@ -16,6 +16,14 @@ pip install git+https://github.com/yang0/SzAutoSchema
 
 设置settings.py
 -----------------------------------------
+	STATIC_ROOT = '/static/'
+
+	INSTALLED_APPS = [
+	    ...
+	    'django.contrib.staticfiles',
+	]
+
+
 	RUN_ENV = os.getenv("RUN_ENV",default='')
 	# swagger相关配置====================
 	if RUN_ENV == 'dev':
