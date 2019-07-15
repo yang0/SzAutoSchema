@@ -38,6 +38,7 @@ pip install -U git+https://github.com/yang0/SzAutoSchema
 	        'PERSIST_AUTH': False,
 	        'REFETCH_SCHEMA_WITH_AUTH': False,
 	        'REFETCH_SCHEMA_ON_LOGOUT': False,
+		'DEFAULT_INFO': 'server.urls.swagger_info', #这里server请更换成自己的路径
 
 
 	        'DEFAULT_AUTO_SCHEMA_CLASS': 'szautoschema.SzAutoSchema',
@@ -51,18 +52,26 @@ pip install -U git+https://github.com/yang0/SzAutoSchema
 	from drf_yasg import openapi
 	from drf_yasg.views import get_schema_view
 
-	schema_view = get_schema_view(
-	    openapi.Info(
-	        title="Snippets API",
-	        default_version='v1',
-	        description="Test description",
-	        terms_of_service="https://www.google.com/policies/terms/",
-	        contact=openapi.Contact(email="contact@snippets.local"),
-	        license=openapi.License(name="BSD License"),
-	    ),
-	    public=True,
-	    permission_classes=(permissions.AllowAny,),
-	)
+	swagger_info = openapi.Info(
+    title="Snippets API",
+    default_version='v1',
+    description="""This is a demo project for the [drf-yasg](https://github.com/axnsan12/drf-yasg) Django Rest Framework library.
+
+The `swagger-ui` view can be found [here](/cached/swagger).  
+The `ReDoc` view can be found [here](/cached/redoc).  
+The swagger YAML document can be found [here](/cached/swagger.yaml).  
+
+You can log in using the pre-existing `admin` user with password `passwordadmin`.""",  # noqa
+    terms_of_service="https://www.google.com/policies/terms/",
+    contact=openapi.Contact(email="contact@snippets.local"),
+    license=openapi.License(name="BSD License"),
+)
+
+schema_view = get_schema_view(
+    swagger_info,
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 
 	urlpatterns = [
