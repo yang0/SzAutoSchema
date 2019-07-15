@@ -29,6 +29,7 @@ pip install -U git+https://github.com/yang0/SzAutoSchema
 	if RUN_ENV == 'dev':
 	    DEV_APPS = [
 	        'drf_yasg',
+	        'szautoschema',
 	    ]
 
 	    INSTALLED_APPS += DEV_APPS
@@ -88,3 +89,10 @@ http://localhost:8080/swagger  效果如下：
 3 接口文件中的注释按照apiDoc规范，得这么写（后期可以将apiDoc转swagger格式，用来mock接口）：  
 ![screen shot](./img/2.png)  
 如果嫌手打注释麻烦，建议在vs code里面装一个apidoc snippets
+
+
+# 生成接口文档
+1 python manage.py generate_swagger api.json  (这个文档是swagger格式)  
+2 python manage.py extract_api -j api.json (在上一步的基础上，生成简易的文档，只有接口和说明，顺便统计下接口的注释完成率)  
+
+
